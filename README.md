@@ -2,7 +2,7 @@
 
 Write React components, get PDF and PNG slides. Built for LinkedIn carousels, course materials, and any slide-based content.
 
-![Example slides generated with Presentation Generator](src/content/demo/example-1.pdf)
+[Example slides generated with Presentation Generator](src/content/demo/example-1.pdf)
 
 ## How It Works
 
