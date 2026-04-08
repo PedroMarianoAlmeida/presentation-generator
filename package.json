@@ -8,10 +8,13 @@
   "type": "module",
   "scripts": {
     "build-pdf": "node --import tsx/esm src/scripts/pdf/buildPdf.tsx",
-    "watch": "nodemon --watch src --watch src/scripts/pdf/buildPdfConfig.json --ext tsx,json --exec \"npm run build-pdf\""
+    "watch": "nodemon --watch src --ext ts,tsx --exec \"npm run build-pdf\"",
+    "publish": "node --import tsx/esm src/scripts/publish/publish.ts"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.0",
+    "cloudinary": "^2.9.0",
+    "dotenv": "^17.4.1",
     "nodemon": "^3.1.10",
     "pdf-to-img": "^5.0.0",
     "react": "^18.2.0"

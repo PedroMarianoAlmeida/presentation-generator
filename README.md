@@ -79,23 +79,23 @@ export default function MyPresentation() {
 
 ### 2. Point the build config to your file
 
-Edit `src/scripts/pdf/buildPdfConfig.json`:
+Edit `src/scripts/pdf/buildPdfConfig.ts`:
 
-```json
-{
-  "source": "src/content/my-presentation.tsx",
-  "destiny": "src/content/my-presentation.pdf"
-}
+```ts
+export default {
+  source: "src/content/my-presentation.tsx",
+  destiny: "src/content/my-presentation.pdf",
+};
 ```
 
 Add `"destiniy-image"` to also export PNG:
 
-```json
-{
-  "source": "src/content/my-presentation.tsx",
-  "destiny": "src/content/my-presentation.pdf",
-  "destiniy-image": "src/content/my-presentation.png"
-}
+```ts
+export default {
+  source: "src/content/my-presentation.tsx",
+  destiny: "src/content/my-presentation.pdf",
+  "destiniy-image": "src/content/my-presentation.png",
+};
 ```
 
 ### 3. Build
@@ -172,7 +172,7 @@ src/
     fonts/              #   Font registration (fontConfig.ts)
   scripts/pdf/          # Build system
     buildPdf.tsx        #   PDF/PNG renderer
-    buildPdfConfig.json #   Points to source and output paths
+    buildPdfConfig.ts   #   Points to source and output paths
 ```
 
 ## Fonts
@@ -194,4 +194,3 @@ This project pairs well with MCP (Model Context Protocol) servers for a full con
 ## License
 
 MIT
-

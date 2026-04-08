@@ -2,38 +2,18 @@ import { renderToFile } from "@react-pdf/renderer";
 import React from "react";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
 import { pdf } from "pdf-to-img";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-interface BuildPdfConfig {
-  source: string;
-  destiny: string;
-  "destiniy-image"?: string;
-}
+import buildPdfConfig from "./buildPdfConfig.ts";
 
 async function main() {
-  const configPath = path.resolve(__dirname, "buildPdfConfig.json");
-  
   try {
-    if (!fs.existsSync(configPath)) {
-      console.error("Configuration file not found: buildPdfConfig.json");
-      console.error("Please create src/utils/buildPdfConfig.json with 'source' and 'destiny' fields");
+    if (!buildPdfConfig.source || !buildPdfConfig.destiny) {
+      console.error("buildPdfConfig.ts must contain 'source' and 'destiny' fields");
       process.exit(1);
     }
 
-    const configContent = fs.readFileSync(configPath, "utf-8");
-    const config: BuildPdfConfig = JSON.parse(configContent);
-    
-    if (!config.source || !config.destiny) {
-      console.error("Configuration file must contain 'source' and 'destiny' fields");
-      process.exit(1);
-    }
-
-    const componentPath = config.source;
-    const outputPath = config.destiny;
+    const componentPath = buildPdfConfig.source;
+    const outputPath = buildPdfConfig.destiny;
     // Resolve the component path relative to the project root
     const resolvedComponentPath = path.resolve(process.cwd(), componentPath);
     
@@ -58,8 +38,8 @@ async function main() {
     console.log(`PDF generated successfully: ${resolvedOutputPath}`);
 
     // Generate image if destiniy-image is specified
-    if (config["destiniy-image"]) {
-      const imagePath = path.resolve(process.cwd(), config["destiniy-image"]);
+    if (buildPdfConfig["destiniy-image"]) {
+      const imagePath = path.resolve(process.cwd(), buildPdfConfig["destiniy-image"]);
       const imageDir = path.dirname(imagePath);
 
       // Ensure image output directory exists
@@ -83,7 +63,8 @@ async function main() {
       }
     }
   } catch (error) {
-    console.error("Error generating PDF:", error.message);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Error generating PDF:", message);
     process.exit(1);
   }
 }

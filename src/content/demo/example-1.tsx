@@ -439,7 +439,7 @@ function ExampleDocument() {
             bullets={[
               {
                 icon: "code",
-                text: "Configure buildPdfConfig.json with source and destiny paths",
+                text: "Configure buildPdfConfig.ts with source and destiny paths",
               },
               {
                 icon: "target",
