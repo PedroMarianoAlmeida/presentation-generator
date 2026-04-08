@@ -4,9 +4,21 @@
   "description": "Project to help of generate and publish pdfs and images using react",
   "license": "MIT",
   "author": "Pedro Almeida",
-  "type": "commonjs",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-pdf": "node --import tsx/esm src/scripts/pdf/buildPdf.tsx",
+    "watch": "nodemon --watch src --watch src/scripts/pdf/buildPdfConfig.json --ext tsx,json --exec \"npm run build-pdf\""
+  },
+  "dependencies": {
+    "@react-pdf/renderer": "^4.3.0",
+    "nodemon": "^3.1.10",
+    "pdf-to-img": "^5.0.0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.12",
+    "tsx": "^4.0.0"
   }
 }
