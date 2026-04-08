@@ -1,0 +1,12 @@
+{
+  "name": "presentation-generator",
+  "version": "1.0.0",
+  "description": "Project to help of generate and publish pdfs and images using react",
+  "license": "MIT",
+  "author": "Pedro Almeida",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
