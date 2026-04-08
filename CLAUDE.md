@@ -10,6 +10,7 @@ React PDF presentation generator for LinkedIn carousel content. Converts TSX com
 
 - `npm run build-pdf` - Generate PDF from the component configured in `src/scripts/pdf/buildPdfConfig.ts`
 - `npm run watch` - Watch `src/` for changes and auto-regenerate
+- `npm run publish` - Create a Buffer post using `src/scripts/publish/publishConfig.ts`
 
 ## Architecture
 
@@ -28,6 +29,22 @@ Config fields:
 - `source` - Path to TSX component (relative to project root)
 - `destiny` - Output PDF path
 - `destiniy-image` - (Optional) Output PNG path. Note: property name is intentionally `destiniy` (typo preserved for compatibility)
+
+### Publish System
+
+`src/scripts/publish/publish.ts` loads `.env`, validates `publishConfig.ts`, checks the selected Buffer channel, uploads local assets to Cloudinary when needed, and creates the Buffer post through Buffer's GraphQL API.
+
+Publish config fields:
+- `copy` - Post text
+- `asset` - Optional PNG asset path or remote URL for the media
+- `mediaName` - Required when `asset` is a local file; used for the Cloudinary public ID and document title
+- `channelId` - Buffer channel ID
+- `organizationId` - Buffer organization ID; must match the selected channel
+- `scheduledAt` - Optional ISO date string in the future; if omitted the post is published immediately
+
+Environment variables:
+- `BUFFER_TOKEN` - Required for all publishing
+- `CLOUDINARY_URL` - Required when publishing media
 
 ### Presentation File Pattern
 
@@ -62,3 +79,6 @@ For emoji support, some presentations also register an emoji source from a CDN (
 - **Icons**: `IconProvider` component (`src/template/components/icons/`) maps string names to SVG components. Inline SVG icon components are in `src/assets/icons/svg-icons.tsx`
 - **Signatures**: Default author/role/avatar configured in `src/template/components/signatures/signatureDefault.ts`
 - **Components are position-based**: Reusable components handle layout/positioning; colors and content come from props
+- **Publishing is built in**: Cloudinary and Buffer integrations are native to this repo; no MCP connection is required to upload media or create posts
+- **Publishing asset**: Prefer the generated PNG output when publishing slides
+- **Buffer scope**: The publish script currently validates and supports LinkedIn Buffer channels only

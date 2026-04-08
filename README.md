@@ -108,6 +108,12 @@ npm run build-pdf
 npm run watch
 ```
 
+Publish to Buffer:
+
+```bash
+npm run publish
+```
+
 ## Components
 
 ### Page Wrappers
@@ -173,6 +179,9 @@ src/
   scripts/pdf/          # Build system
     buildPdf.tsx        #   PDF/PNG renderer
     buildPdfConfig.ts   #   Points to source and output paths
+  scripts/publish/      # Publishing system
+    publish.ts          #   Validates config, uploads media, creates Buffer post
+    publishConfig.ts    #   Post copy, asset, Buffer IDs, and schedule
 ```
 
 ## Fonts
@@ -184,12 +193,49 @@ The project includes these fonts (all open-source, SIL Open Font License):
 - **Borel** — handwritten style for notes
 - **Noto Emoji** — emoji rendering in PDFs
 
-## MCP Integrations
+## Publishing
 
-This project pairs well with MCP (Model Context Protocol) servers for a full content pipeline:
+Cloudinary and Buffer are baked into the project. You do not need to connect MCP servers to upload assets or create posts.
 
-- **Buffer MCP** — schedule and publish carousels directly to LinkedIn
-- **Cloudinary MCP** — upload and manage slide images in the cloud
+### 1. Add environment variables
+
+Copy `.env.example` to `.env` and fill in your credentials:
+
+```bash
+BUFFER_TOKEN=
+CLOUDINARY_URL=
+```
+
+### 2. Configure the post
+
+Edit `src/scripts/publish/publishConfig.ts`:
+
+```ts
+const publishConfig = {
+  copy: "My post copy",
+  asset: "src/content/demo/example-1.png",
+  mediaName: "example-1",
+  channelId: "your-buffer-channel-id",
+  organizationId: "your-buffer-organization-id",
+  scheduledAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+};
+```
+
+Notes:
+
+- `copy` can be omitted if you want to post media only
+- `asset` can be a local file path or remote URL
+- use a generated `.png` slide asset for publishing
+- local PNG assets are uploaded through Cloudinary automatically
+- the current Buffer integration validates the selected channel and supports LinkedIn channels only
+
+### 3. Publish
+
+```bash
+npm run publish
+```
+
+The script loads `.env`, validates the Buffer channel, uploads local media to Cloudinary when needed, and creates the Buffer post immediately or at `scheduledAt`.
 
 ## License
 
