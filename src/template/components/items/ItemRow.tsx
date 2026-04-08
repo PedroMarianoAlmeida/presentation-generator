@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
-import { CheckIcon, XIcon } from "../../../content/shared/icons/svg-icons";
+import { CheckIcon, XIcon } from "../../../assets/icons/svg-icons";
 
 interface ItemRowProps {
   text: string;

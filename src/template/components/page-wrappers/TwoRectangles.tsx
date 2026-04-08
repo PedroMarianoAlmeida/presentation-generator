@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { View, Page, StyleSheet } from "@react-pdf/renderer";
-import { CircleArrowRightIcon } from "../../../content/shared/icons/svg-icons";
+import { CircleArrowRightIcon } from "../../../assets/icons/svg-icons";
 
 interface TwoRectanglesProps {
   children: ReactNode;

@@ -1,4 +1,10 @@
 import { Font } from "@react-pdf/renderer";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ASSETS_FONTS = path.resolve(__dirname, "../../assets/assets/fonts");
+const SHARED_FONTS = path.resolve(__dirname, "../../assets/fonts");
 
 // Register all custom fonts used across presentations
 export function registerFonts() {
@@ -7,19 +13,19 @@ export function registerFonts() {
     family: "KodeMono",
     fonts: [
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Kode_Mono/static/KodeMono-Regular.ttf",
+        src: path.join(ASSETS_FONTS, "Kode_Mono/static/KodeMono-Regular.ttf"),
         fontWeight: "normal",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Kode_Mono/static/KodeMono-Medium.ttf",
+        src: path.join(ASSETS_FONTS, "Kode_Mono/static/KodeMono-Medium.ttf"),
         fontWeight: "medium",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Kode_Mono/static/KodeMono-SemiBold.ttf",
+        src: path.join(ASSETS_FONTS, "Kode_Mono/static/KodeMono-SemiBold.ttf"),
         fontWeight: "semibold",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Kode_Mono/static/KodeMono-Bold.ttf",
+        src: path.join(ASSETS_FONTS, "Kode_Mono/static/KodeMono-Bold.ttf"),
         fontWeight: "bold",
       },
     ],
@@ -30,28 +36,28 @@ export function registerFonts() {
     family: "Inter",
     fonts: [
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Inter/static/Inter_18pt-Regular.ttf",
+        src: path.join(ASSETS_FONTS, "Inter/static/Inter_18pt-Regular.ttf"),
         fontWeight: "normal",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Inter/static/Inter_18pt-Medium.ttf",
+        src: path.join(ASSETS_FONTS, "Inter/static/Inter_18pt-Medium.ttf"),
         fontWeight: "medium",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Inter/static/Inter_18pt-SemiBold.ttf",
+        src: path.join(ASSETS_FONTS, "Inter/static/Inter_18pt-SemiBold.ttf"),
         fontWeight: "semibold",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Inter/static/Inter_18pt-Bold.ttf",
+        src: path.join(ASSETS_FONTS, "Inter/static/Inter_18pt-Bold.ttf"),
         fontWeight: "bold",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Inter/static/Inter_18pt-Italic.ttf",
+        src: path.join(ASSETS_FONTS, "Inter/static/Inter_18pt-Italic.ttf"),
         fontWeight: "normal",
         fontStyle: "italic",
       },
       {
-        src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Inter/static/Inter_18pt-BoldItalic.ttf",
+        src: path.join(ASSETS_FONTS, "Inter/static/Inter_18pt-BoldItalic.ttf"),
         fontWeight: "bold",
         fontStyle: "italic",
       },
@@ -61,13 +67,13 @@ export function registerFonts() {
   // Register Borel font
   Font.register({
     family: "Borel",
-    src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/assets/fonts/Borel/Borel-Regular.ttf",
+    src: path.join(ASSETS_FONTS, "Borel/Borel-Regular.ttf"),
   });
 
   // Register Noto Emoji font (using static version for better PDF compatibility)
   Font.register({
     family: "NotoEmoji",
-    src: "/Users/pedroalmeida/Documents/GitHub/personal/presentation-generator/src/content/shared/fonts/Noto_Emoji/static/NotoEmoji-Regular.ttf",
+    src: path.join(SHARED_FONTS, "Noto_Emoji/static/NotoEmoji-Regular.ttf"),
   });
 }
 

@@ -7,13 +7,16 @@ import {
   StyleSheet,
   Font,
 } from "@react-pdf/renderer";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import {
   FileHeartIcon,
   MoveRightIcon,
-  CodeIcon,
   WandSparklesIcon,
   RocketIcon,
-} from "../shared/icons/svg-icons";
+} from "../../assets/icons/svg-icons";
 import { HeaderSignature } from "../../template/components/headers/HeaderSignature";
 import { SocialMediaSignature } from "../../template/components/signatures/SocialMediaSignature";
 import { BulletsList } from "../../template/components/lists/BulletsList";
@@ -100,8 +103,8 @@ function ExampleDocument() {
                 color: "#16A085",
               }}
             >
-              Generate slides from React components. A complete guide to
-              this repo.
+              Generate slides from React components. A complete guide to this
+              repo.
             </Text>
           </View>
         </View>
@@ -137,7 +140,7 @@ function ExampleDocument() {
           </ContentText>
           <View style={{ marginTop: 30 }}>
             <ContentText variant="description" color="#16A085">
-              Write TSX components, get PDF/JPEG slides.
+              Write TSX components, get PDF/PNG slides.
             </ContentText>
           </View>
         </View>
@@ -246,7 +249,7 @@ function ExampleDocument() {
         </View>
       </TwoRectangles>
 
-      {/* Slide 6 - ContentImage */}
+      {/* Slide 6 - ContentImage (URL) */}
       <HeaderFooter
         author="Pedro Almeida"
         role="Sharing Code & Career Insights"
@@ -255,7 +258,7 @@ function ExampleDocument() {
       >
         <View style={{ alignItems: "center" }}>
           <Text style={[styles.contentTitle, { color: "#EAEAEA" }]}>
-            ContentImage
+            Images from URL
           </Text>
           <ContentImage src="https://plus.unsplash.com/premium_photo-1674489620667-eaf4a0094996?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
           <Text
@@ -266,24 +269,37 @@ function ExampleDocument() {
               color: "#16A085",
             }}
           >
-            Use ContentImage to display images in your slides
-          </Text>
-          <Text
-            style={{
-              fontSize: 24,
-              marginTop: 15,
-              textAlign: "center",
-              fontStyle: "italic",
-              color: "#EAEAEA",
-              opacity: 0.7,
-            }}
-          >
-            Supports absolute file paths or direct image URLs from the internet
+            Pass a URL directly to ContentImage
           </Text>
         </View>
       </HeaderFooter>
 
-      {/* Slide 7 - HandWrittenNoteSlide */}
+      {/* Slide 7 - ContentImage (Local) */}
+      <HeaderFooter
+        author="Pedro Almeida"
+        role="Sharing Code & Career Insights"
+        backgroundColor="#1A1A2E"
+        textColor="#EAEAEA"
+      >
+        <View style={{ alignItems: "center" }}>
+          <Text style={[styles.contentTitle, { color: "#EAEAEA" }]}>
+            Local Images
+          </Text>
+          <ContentImage src={path.resolve(__dirname, "local-image.jpg")} />
+          <Text
+            style={{
+              fontSize: 28,
+              marginTop: 20,
+              textAlign: "center",
+              color: "#16A085",
+            }}
+          >
+            Use path.resolve(__dirname, ...) for local files
+          </Text>
+        </View>
+      </HeaderFooter>
+
+      {/* Slide 8 - HandWrittenNoteSlide */}
       <HandWrittenNoteSlide
         backgroundColor="#FFD93D"
         variant="content"
@@ -301,7 +317,7 @@ function ExampleDocument() {
         <Text>Card Content</Text>
       </HandWrittenNoteSlide>
 
-      {/* Slide 8 - ItemRow Component */}
+      {/* Slide 9 - ItemRow Component */}
       <HeaderFooter
         author="Pedro Almeida"
         role="Sharing Code & Career Insights"
@@ -353,7 +369,7 @@ function ExampleDocument() {
         </View>
       </HeaderFooter>
 
-      {/* Slide 9 - signatureDefault */}
+      {/* Slide 10 - signatureDefault */}
       <HeaderFooter
         author="Pedro Almeida"
         role="Sharing Code & Career Insights"
@@ -408,7 +424,7 @@ function ExampleDocument() {
         </View>
       </HeaderFooter>
 
-      {/* Slide 10 - Generating Output */}
+      {/* Slide 11 - Generating Output */}
       <HeaderFooter
         author="Pedro Almeida"
         role="Sharing Code & Career Insights"
@@ -454,7 +470,7 @@ function ExampleDocument() {
         </View>
       </HeaderFooter>
 
-      {/* Slide 8 - MCP Integrations */}
+      {/* Slide 12 - MCP Integrations */}
       <HeaderFooter
         author="Pedro Almeida"
         role="Sharing Code & Career Insights"
@@ -494,7 +510,7 @@ function ExampleDocument() {
         </View>
       </HeaderFooter>
 
-      {/* Slide 9 - CTA (Custom Page + HeaderSignature) */}
+      {/* Slide 13 - CTA (Custom Page + HeaderSignature) */}
       <Page
         size={[1080, 1080]}
         style={{

@@ -1,7 +1,7 @@
 import React from "react";
 import { Page, View, Text, StyleSheet } from "@react-pdf/renderer";
 import { HeaderSignature } from "../headers/HeaderSignature";
-import { MoveRightIcon } from "../../../content/shared/icons/svg-icons";
+import { MoveRightIcon } from "../../../assets/icons/svg-icons";
 
 interface HeaderFooterProps {
   children: React.ReactNode;

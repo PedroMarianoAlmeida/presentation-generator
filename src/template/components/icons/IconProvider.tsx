@@ -29,7 +29,7 @@ import {
   BrainCircuitIcon,
   ScaleIcon,
   CheckIcon,
-} from "../../../content/shared/icons/svg-icons";
+} from "../../../assets/icons/svg-icons";
 
 interface IconProviderProps {
   iconType: string;
