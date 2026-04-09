@@ -4,6 +4,8 @@ Write React components, get PDF and PNG slides. Built for LinkedIn carousels, co
 
 [Example slides generated with Presentation Generator](src/content/demo/example-1.pdf)
 
+[Watch the project presentation on YouTube](https://youtu.be/6Gx6R2eQuU0)
+
 ## How It Works
 
 Each presentation is a TSX file that exports a `Document` with `Page` elements. The build system renders it to PDF (and optionally PNG) using [`@react-pdf/renderer`](https://react-pdf.org/).
