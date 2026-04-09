@@ -8,7 +8,7 @@ React PDF presentation generator for LinkedIn carousel content. Converts TSX com
 
 ## Key Commands
 
-- `npm run build-pdf` - Generate PDF from the component configured in `src/scripts/pdf/buildPdfConfig.ts`
+- `npm run build` - Generate PDF/PNG output from the component configured in `src/scripts/build/buildConfig.ts`
 - `npm run watch` - Watch `src/` for changes and auto-regenerate
 - `npm run publish` - Create a Buffer post using `src/scripts/publish/publishConfig.ts`
 
@@ -18,17 +18,19 @@ React PDF presentation generator for LinkedIn carousel content. Converts TSX com
 
 1. **Reusable components** (`src/template/components/`) - Layout and content building blocks
 2. **Presentation files** (`src/content/`) - TSX files that compose components with content data
-3. **Build config** (`src/scripts/pdf/buildPdfConfig.ts`) - Points to source TSX and output paths
+3. **Build config** (`src/scripts/build/buildConfig.ts`) - Points to source TSX and output paths
 4. **Generated output** - PDF (and optionally PNG) files co-located with the source TSX
 
 ### Build System
 
-`src/scripts/pdf/buildPdf.tsx` imports the config from `buildPdfConfig.ts`, renders the selected TSX component with `@react-pdf/renderer`, and optionally converts pages to PNG via `pdf-to-img`.
+`src/scripts/build/build.tsx` imports the config from `buildConfig.ts`, renders the selected TSX component with `@react-pdf/renderer`, and optionally converts pages to PNG via `pdf-to-img`.
 
 Config fields:
 - `source` - Path to TSX component (relative to project root)
-- `destiny` - Output PDF path
-- `destiniy-image` - (Optional) Output PNG path. Note: property name is intentionally `destiniy` (typo preserved for compatibility)
+- `destinyPdf` - Optional output PDF path
+- `destinyImage` - Optional output PNG path
+
+At least one of `destinyPdf` or `destinyImage` must be set.
 
 ### Publish System
 

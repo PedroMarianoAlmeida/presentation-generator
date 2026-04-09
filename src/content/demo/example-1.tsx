@@ -104,7 +104,7 @@ function ExampleDocument() {
               }}
             >
               Generate slides from React components. A complete guide to this
-              repo.
+              repo a.
             </Text>
           </View>
         </View>
@@ -439,11 +439,11 @@ function ExampleDocument() {
             bullets={[
               {
                 icon: "code",
-                text: "Configure buildPdfConfig.ts with source and destiny paths",
+                text: "Configure buildConfig.ts with source and destinyPdf/destinyImage paths",
               },
               {
                 icon: "target",
-                text: 'Run "npm run build-pdf" to generate your PDF',
+                text: 'Run "npm run build" to generate your output',
               },
               {
                 icon: "repeat",
@@ -465,7 +465,7 @@ function ExampleDocument() {
               color: "#16A085",
             }}
           >
-            Add "destiniy-image" to config for PNG export
+            Add "destinyImage" to config for PNG export
           </Text>
         </View>
       </HeaderFooter>

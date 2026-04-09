@@ -9,7 +9,7 @@ Write React components, get PDF and PNG slides. Built for LinkedIn carousels, co
 Each presentation is a TSX file that exports a `Document` with `Page` elements. The build system renders it to PDF (and optionally PNG) using [`@react-pdf/renderer`](https://react-pdf.org/).
 
 ```
-TSX Component  -->  npm run build-pdf  -->  PDF / PNG slides
+TSX Component  -->  npm run build  -->  PDF / PNG slides
 ```
 
 ## Quick Start
@@ -24,7 +24,7 @@ npm install
 Build the demo:
 
 ```bash
-npm run build-pdf
+npm run build
 ```
 
 The generated PDF will appear at `src/content/demo/example-1.pdf`.
@@ -79,30 +79,32 @@ export default function MyPresentation() {
 
 ### 2. Point the build config to your file
 
-Edit `src/scripts/pdf/buildPdfConfig.ts`:
+Edit `src/scripts/build/buildConfig.ts`:
 
 ```ts
 export default {
   source: "src/content/my-presentation.tsx",
-  destiny: "src/content/my-presentation.pdf",
+  destinyPdf: "src/content/my-presentation.pdf",
 };
 ```
 
-Add `"destiniy-image"` to also export PNG:
+Add `destinyImage` to also export PNG:
 
 ```ts
 export default {
   source: "src/content/my-presentation.tsx",
-  destiny: "src/content/my-presentation.pdf",
-  "destiniy-image": "src/content/my-presentation.png",
+  destinyPdf: "src/content/my-presentation.pdf",
+  destinyImage: "src/content/my-presentation.png",
 };
 ```
+
+You can set either `destinyPdf`, `destinyImage`, or both.
 
 ### 3. Build
 
 ```bash
 # One-off build
-npm run build-pdf
+npm run build
 
 # Watch mode — auto-rebuilds on file changes
 npm run watch
@@ -176,9 +178,9 @@ src/
       icons/            #     IconProvider
       cards/            #     FinalCard
     fonts/              #   Font registration (fontConfig.ts)
-  scripts/pdf/          # Build system
-    buildPdf.tsx        #   PDF/PNG renderer
-    buildPdfConfig.ts   #   Points to source and output paths
+  scripts/build/        # Build system
+    build.tsx           #   PDF/PNG renderer
+    buildConfig.ts      #   Points to source and output paths
   scripts/publish/      # Publishing system
     publish.ts          #   Validates config, uploads media, creates Buffer post
     publishConfig.ts    #   Post copy, asset, Buffer IDs, and schedule

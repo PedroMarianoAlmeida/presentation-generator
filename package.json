@@ -7,8 +7,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build-pdf": "node --import tsx/esm src/scripts/pdf/buildPdf.tsx",
-    "watch": "nodemon --watch src --ext ts,tsx --exec \"npm run build-pdf\"",
+    "build": "node --import tsx/esm src/scripts/build/build.tsx",
+    "watch": "nodemon --watch src --ext ts,tsx --exec \"npm run build\"",
     "publish": "node --import tsx/esm src/scripts/publish/publish.ts"
   },
   "dependencies": {
